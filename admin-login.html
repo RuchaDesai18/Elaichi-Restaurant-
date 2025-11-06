@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elaichi • Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d0b09 0%, #1a1612 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      color: #e8e1d1;
+      padding: 1.5rem;
+    }
+
+    .login-container {
+      background: rgba(20, 18, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(193, 154, 107, 0.2);
+      width: 100%;
+      max-width: 450px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(193, 154, 107, 0.15);
+    }
+
+    .login-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, transparent, #c19a6b, #a67c52, #c19a6b, transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-icon {
+      font-size: 2.8rem;
+      background: linear-gradient(45deg, #c19a6b, #e8c99e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #e8e1d1, #f9f7f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #c8b99e;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #e8e1d1;
+    }
+
+    input {
+      width: 100%;
+      padding: 1.1rem 1.3rem;
+      border: 1px solid #3a3630;
+      border-radius: 12px;
+      background: rgba(25, 23, 20, 0.7);
+      font-family: inherit;
+      font-size: 1.1rem;
+      color: #f9f7f0;
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #c19a6b;
+      box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.3);
+      background: rgba(30, 28, 25, 0.9);
+    }
+
+    button {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #c19a6b 0%, #a67c52 100%);
+      color: #0d0b09;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.4s;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(166, 124, 82, 0.5);
+    }
+
+    #error {
+      padding: 1rem;
+      background: rgba(244, 67, 54, 0.15);
+      border-left: 4px solid #f44336;
+      color: #f44336;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #a89a85;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h1>Manager Login</h1>
+      <p class="subtitle">Elaichi • Secure Access Only</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="off" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="off" required>
+      </div>
+      
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i> Sign In
+      </button>
+    </form>
+
+    <div id="error">
+      <i class="fas fa-exclamation-circle"></i> Invalid username or password.
+    </div>
+
+    <footer>
+      <p>© 2025 Elaichi. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // ✅ SET YOUR CREDENTIALS HERE (change before deploying!)
+    const ADMIN_USERNAME = "Ruchaa";
+    const ADMIN_PASSWORD = "elaichi@12"; // ← CHANGE THIS!
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        // ✅ Success → redirect
+        alert("✅ Login successful! Redirecting...");
+        window.location.href = "admin.html"; // must be in same folder
+      } else {
+        // ❌ Show error
+        const errorDiv = document.getElementById('error');
+        errorDiv.style.display = 'block';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    });
+  </script>
+</body>
+</html>
