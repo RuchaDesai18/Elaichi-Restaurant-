@@ -488,7 +488,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
   sessionStorage.setItem('userName', document.getElementById('name').value);
   sessionStorage.setItem('userEmail', document.getElementById('email').value);
   sessionStorage.setItem('bookedTable', 'T5'); // ← get from selection
-  sessionStorage.setItem('bookingDateTime', '2025-11-07T19:30:00'); // ISO string
+  sessionStorage.setItem( 'new Date(sessionStorage.getItem('bookingDateTime'));'); // ISO string
   sessionStorage.setItem('guests', '4');
   sessionStorage.setItem('totalAmount', '3200');
 
